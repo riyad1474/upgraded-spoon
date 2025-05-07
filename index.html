@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আজাদ পাইভট সেন্টার</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --success-color: #27ae60;
+            --notice-color: #e74c3c;
+            --banner-gradient: linear-gradient(135deg, #e74c3c, #c0392b);
+            --font-primary: 'Hind Siliguri', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-primary);
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* হেডার স্টাইল */
+        header {
+            background: var(--banner-gradient);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* নেভিগেশন মেনু */
+        nav {
+            background-color: var(--secondary-color);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: flex-start;
+            list-style: none;
+            padding-left: 1rem;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        nav ul li a.active {
+            background-color: var(--primary-color);
+        }
+        
+        /* মেইন কন্টেন্ট */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            min-height: 60vh;
+        }
+        
+        .notice-board {
+            background-color: white;
+            padding: 0;
+            margin-bottom: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-left: 4px solid var(--notice-color);
+        }
+        
+        .notice-header {
+            background-color: var(--notice-color);
+            color: white;
+            padding: 0.8rem;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        
+        .notice-content {
+            padding: 1rem;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        .notice-content ul {
+            list-style-type: none;
+        }
+        
+        .notice-content li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 0.9rem;
+        }
+        
+        /* ব্যাচ কার্ড */
+        .batch-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .batch-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .batch-header {
+            background: var(--banner-gradient);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        .batch-content {
+            padding: 1.2rem;
+        }
+        
+        .batch-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .batch-stat {
+            text-align: center;
+        }
+        
+        .batch-stat-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .batch-stat-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .batch-btn {
+            display: block;
+            background: var(--banner-gradient);
+            color: white;
+            text-align: center;
+            padding: 0.6rem;
+            margin-top: 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        /* ব্যাচ ডিটেইল পেজ */
+        .batch-details-page {
+            display: none;
+        }
+        
+        .batch-details-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: var(--banner-gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .batch-details {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        /* টেবিল স্টাইল */
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        th, td {
+            padding: 0.8rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        /* এডমিন লগইন পেজ */
+        .login-page {
+            display: none;
+        }
+        
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            padding: 1.5rem;
+        }
+        
+        .login-form {
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .login-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .login-btn {
+            width: 100%;
+            background: var(--banner-gradient);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        /* এডমিন প্যানেল */
+        .admin-panel-page {
+            display: none;
+        }
+        
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        
+        .admin-panel {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .admin-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .logout-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .admin-menu {
+            display: flex;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+        
+        .admin-menu a {
+            padding: 0.6rem 1rem;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        
+        .admin-menu a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .admin-section {
+            display: none;
+        }
+        
+        .admin-section.active {
+            display: block;
+        }
+        
+        .action-btns {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .action-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .edit-btn {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .add-btn {
+            background-color: #27ae60;
+            color: white;
+            margin-bottom: 1rem;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .save-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        /* ফুটার */
+        .footer-container {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1.5rem 0;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-section {
+            padding: 0.5rem;
+        }
+        
+        .footer-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: white;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.3rem;
+            display: inline-block;
+        }
+        
+        .footer-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 1rem;
+            background-color: #1a252f;
+            color: white;
+            font-size: 0.8rem;
+        }
+        
+        /* রেস্পন্সিভ */
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            .batch-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- হোম পেজ -->
+    <div id="home-page">
+        <header>
+            <div class="logo" id="institute-name">আজাদ পাইভট সেন্টার</div>
+            <div class="tagline">গুণগত শিক্ষার জন্য আমাদের অঙ্গীকার</div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#home-page" class="active">হোম</a></li>
+                <li><a href="#batch-list">ব্যাচ</a></li>
+                <li><a href="#admin-login">এডমিন লগইন</a></li>
+            </ul>
+        </nav>
+        
+        <div class="container">
+            <section class="notice-board">
+                <div class="notice-header">সাম্প্রতিক নোটিস</div>
+                <div class="notice-content">
+                    <ul>
+                        <li>আগামী ১০ই তারিখে মাসিক পরীক্ষা অনুষ্ঠিত হবে</li>
+                        <li>বেতন জমা দেওয়ার শেষ তারিখ ১৫ই</li>
+                        <li>পরীক্ষার ফলাফল প্রকাশ করা হয়েছে</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="batch-list">
+                <h2 class="section-title">আমাদের ব্যাচসমূহ</h2>
+                <div class="batch-container">
+                    <!-- ব্যাচ ১ -->
+                    <div class="batch-card">
+                        <div class="batch-header">
+                            <h3>ব্যাচ ১</h3>
+                        </div>
+                        <div class="batch-content">
+                            <div class="batch-stats">
+                                <div class="batch-stat">
+                                    <div class="batch-stat-value">২০</div>
+                                    <div class="batch-stat-label">শিক্ষার্থী</div>
+                                </div>
+                                <div class="batch-stat">
+                                    <div class="batch-stat-value">৯৫%</div>
+                                    <div class="batch-stat-label">পাশের হার</div>
+                                </div>
+                            </div>
+                            <button class="batch-btn view-batch" data-batch="1">বিস্তারিত দেখুন</button>
+                        </div>
+                    </div>
+                    
+                    <!-- ব্যাচ ২ -->
+                    <div class="batch-card">
+                        <div class="batch-header">
+                            <h3>ব্যাচ ২</h3>
+                        </div>
+                        <div class="batch-content">
+                            <div class="batch-stats">
+                                <div class="batch-stat">
+                                    <div class="batch-stat-value">২০</div>
+                                    <div class="batch-stat-label">শিক্ষার্থী</div>
+                                </div>
+                                <div class="batch-stat">
+                                    <div class="batch-stat-value">৯২%</div>
+                                    <div class="batch-stat-label">পাশের হার</div>
+                                </div>
+                            </div>
+                            <button class="batch-btn view-batch" data-batch="2">বিস্তারিত দেখুন</button>
+                        </div>
+                    </div>
+                    
+                    <!-- ব্যাচ ৩ -->
+                    <div class="batch-card">
+                        <div class="batch-header">
+                            <h3>ব্যাচ ৩</h3>
+                        </div>
+                        <div class="batch-content">
+                            <div class="batch-stats">
+                                <div class="batch-stat">
+                                    <div class="batch-stat-value">২০</div>
+                                    <div class="batch-stat-label">শিক্ষার্থী</div>
+                                </div>
+                                <div class="batch-stat">
+                                    <div class="batch-stat-value">৯০%</div>
+                                    <div class="batch-stat-label">পাশের হার</div>
+                                </div>
+                            </div>
+                            <button class="batch-btn view-batch" data-batch="3">বিস্তারিত দেখুন</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- ফুটার -->
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">প্রতিষ্ঠানের পরিচিতি</h3>
+                    <div class="footer-text" id="institute-intro">
+                        <p>আজাদ পাইভট সেন্টার একটি আদর্শ শিক্ষা প্রতিষ্ঠান যেখানে আমরা শিক্ষার্থীদের সর্বোত্তম শিক্ষা প্রদান করে থাকি। আমাদের অভিজ্ঞ শিক্ষকমণ্ডলী এবং আধুনিক শিক্ষা পদ্ধতি শিক্ষার্থীদের সাফল্যের পথ সুগম করে।</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">যোগাযোগের তথ্য</h3>
+                    <div class="footer-contact" id="contact-details">
+                        <p><strong>ঠিকানা:</strong> ১২৩ স্কুল রোড, মতিঝিল, ঢাকা</p>
+                        <p><strong>ফোন:</strong> ০১৭১২৩৪৫৬৭৮, ০১৯১২৩৪৫৬৭৮</p>
+                        <p><strong>ইমেইল:</strong> info@azadpivot.edu.bd</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; ২০২৩ আজাদ পাইভট সেন্টার। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </div>
+    
+    <!-- ব্যাচ ডিটেইল পেজ -->
+    <div id="batch-details-page" class="batch-details-page">
+        <div class="batch-details-container">
+            <button class="back-btn" id="back-to-home">← হোম পেজে ফিরে যান</button>
+            
+            <div class="batch-details">
+                <h2 class="section-title" id="batch-title">ব্যাচ ১ - বিস্তারিত তথ্য</h2>
+                
+                <h3>শিক্ষার্থীর তালিকা</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>রোল</th>
+                                <th>নাম</th>
+                                <th>ঠিকানা</th>
+                                <th>মোবাইল নম্বর</th>
+                                <th>বেতন স্ট্যাটাস</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-list">
+                            <!-- শিক্ষার্থী তালিকা এখানে লোড হবে -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>পরীক্ষার ফলাফল</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>রোল</th>
+                                <th>নাম</th>
+                                <th>বাংলা</th>
+                                <th>ইংরেজি</th>
+                                <th>গণিত</th>
+                                <th>মোট</th>
+                                <th>গ্রেড</th>
+                            </tr>
+                        </thead>
+                        <tbody id="result-list">
+                            <!-- ফলাফল তালিকা এখানে লোড হবে -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>সাপ্তাহিক রুটিন</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>দিন</th>
+                                <th>সময়</th>
+                                <th>বিষয়</th>
+                                <th>পাইভেট ক্লাস</th>
+                            </tr>
+                        </thead>
+                        <tbody id="routine-list">
+                            <!-- রুটিন তালিকা এখানে লোড হবে -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- এডমিন লগইন পেজ -->
+    <div id="admin-login" class="login-page">
+        <div class="login-container">
+            <div class="login-form">
+                <h2 class="login-title">এডমিন লগইন</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">ইউজারনেম</label>
+                        <input type="text" id="username" placeholder="আপনার ইউজারনেম লিখুন" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">পাসওয়ার্ড</label>
+                        <input type="password" id="password" placeholder="আপনার পাসওয়ার্ড লিখুন" required>
+                    </div>
+                    <button type="submit" class="login-btn">লগইন করুন</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- এডমিন প্যানেল -->
+    <div id="admin-panel" class="admin-panel-page">
+        <div class="admin-container">
+            <div class="admin-panel">
+                <div class="admin-header">
+                    <h2 class="admin-title">এডমিন প্যানেল</h2>
+                    <button class="logout-btn" id="admin-logout">লগআউট</button>
+                </div>
+                
+                <div class="admin-menu">
+                    <a href="#batch-management" class="admin-menu-link active">ব্যাচ ব্যবস্থাপনা</a>
+                    <a href="#student-management" class="admin-menu-link">শিক্ষার্থী ব্যবস্থাপনা</a>
+                    <a href="#result-management" class="admin-menu-link">ফলাফল ব্যবস্থাপনা</a>
+                    <a href="#routine-management" class="admin-menu-link">রুটিন ব্যবস্থাপনা</a>
+                    <a href="#notice-management" class="admin-menu-link">নোটিস ব্যবস্থাপনা</a>
+                    <a href="#institute-management" class="admin-menu-link">প্রতিষ্ঠান তথ্য</a>
+                </div>
+                
+                <!-- ব্যাচ ব্যবস্থাপনা -->
+                <div id="batch-management" class="admin-section active">
+                    <h3>ব্যাচ ব্যবস্থাপনা</h3>
+                    <button class="action-btn add-btn" id="add-batch">নতুন ব্যাচ যোগ করুন</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ব্যাচ নাম</th>
+                                    <th>শিক্ষার্থী সংখ্যা</th>
+                                    <th>পাশের হার</th>
+                                    <th>অ্যাকশন</th>
+                                </tr>
+                            </thead>
+                            <tbody id="batch-list-admin">
+                                <tr>
+                                    <td><input type="text" value="ব্যাচ ১" class="form-control"></td>
+                                    <td><input type="number" value="20" class="form-control"></td>
+                                    <td><input type="text" value="৯৫%" class="form-control"></td>
+                                    <td class="action-btns">
+                                        <button class="action-btn edit-btn">আপডেট</button>
+                                        <button class="action-btn delete-btn">মুছুন</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" value="ব্যাচ ২" class="form-control"></td>
+                                    <td><input type="number" value="20" class="form-control"></td>
+                                    <td><input type="text" value="৯২%" class="form-control"></td>
+                                    <td class="action-btns">
+                                        <button class="action-btn edit-btn">আপডেট</button>
+                                        <button class="action-btn delete-btn">মুছুন</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" value="ব্যাচ ৩" class="form-control"></td>
+                                    <td><input type="number" value="20" class="form-control"></td>
+                                    <td><input type="text" value="৯০%" class="form-control"></td>
+                                    <td class="action-btns">
+                                        <button class="action-btn edit-btn">আপডেট</button>
+                                        <button class="action-btn delete-btn">মুছুন</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- শিক্ষার্থী ব্যবস্থাপনা -->
+                <div id="student-management" class="admin-section">
+                    <h3>শিক্ষার্থী ব্যবস্থাপনা</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student-batch">ব্যাচ নির্বাচন করুন</label>
+                            <select id="student-batch" class="form-control">
+                                <option value="1">ব্যাচ ১</option>
+                                <option value="2">ব্যাচ ২</option>
+                                <option value="3">ব্যাচ ৩</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button class="action-btn add-btn" id="add-student">নতুন শিক্ষার্থী যোগ করুন</button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>রোল</th>
+                                    <th>নাম</th>
+                                    <th>মোবাইল</th>
+                                    <th>ঠিকানা</th>
+                                    <th>বেতন স্ট্যাটাস</th>
+                                    <th>অ্যাকশন</th>
+                                </tr>
+                            </thead>
+                            <tbody id="student-list-admin">
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="text" value="রিয়াদ হাসান" class="form-control"></td>
+                                    <td><input type="text" value="০১৭১২৩৪৫৬৭৮" class="form-control"></td>
+                                    <td><input type="text" value="মতিঝিল, ঢাকা" class="form-control"></td>
+                                    <td>
+                                        <select class="form-control">
+                                            <option value="paid" selected>পরিশোধিত</option>
+                                            <option value="unpaid">অপরিশোধিত</option>
+                                        </select>
+                                    </td>
+                                    <td class="action-btns">
+                                        <button class="action-btn edit-btn">আপডেট</button>
+                                        <button class="action-btn delete-btn">মুছুন</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><input type="text" value="আকাশ আহমেদ" class="form-control"></td>
+                                    <td><input type="text" value="০১৮১২৩৪৫৬৭৮" class="form-control"></td>
+                                    <td><input type="text" value="ধানমন্ডি, ঢাকা" class="form-control"></td>
+                                    <td>
+                                        <select class="form-control">
+                                            <option value="paid">পরিশোধিত</option>
+                                            <option value="unpaid" selected>অপরিশোধিত</option>
+                                        </select>
+                                    </td>
+                                    <td class="action-btns">
+                                        <button class="action-btn edit-btn">আপডেট</button>
+                                        <button class="action-btn delete-btn">মুছুন</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- ফলাফল ব্যবস্থাপনা -->
+                <div id="result-management" class="admin-section">
+                    <h3>ফলাফল ব্যবস্থাপনা</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="result-batch">ব্যাচ নির্বাচন করুন</label>
+                            <select id="result-batch" class="form-control">
+                                <option value="1">ব্যাচ ১</option>
+                                <option value="2">ব্যাচ ২</option>
+                                <option value="3">ব্যাচ ৩</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="result-exam">পরীক্ষা নির্বাচন করুন</label>
+                            <select id="result-exam" class="form-control">
+                                <option value="monthly-1">মাসিক পরীক্ষা - ১</option>
+                                <option value="monthly-2">মাসিক পরীক্ষা - ২</option>
+                                <option value="final">চূড়ান্ত পরীক্ষা</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>রোল</th>
+                                    <th>নাম</th>
+                                    <th>বাংলা</th>
+                                    <th>ইংরেজি</th>
+                                    <th>গণিত</th>
+                                    <th>বিজ্ঞান</th>
+                                    <th>মোট</th>
+                                    <th>গ্রেড</th>
+                                    <th>অ্যাকশন</th>
+                                </tr>
+                            </thead>
+                            <tbody id="result-list-admin">
+                                <tr>
+                                    <td>1</td>
+                                    <td>রিয়াদ হাসান</td>
+                                    <td><input type="number" value="80" class="form-control" min="0" max="100"></td>
+                                    <td><input type="number" value="85" class="form-control" min="0" max="100"></td>
+                                    <td><input type="number" value="90" class="form-control" min="0" max="100"></td>
+                                    <td><input type="number" value="95" class="form-control" min="0" max="100"></td>
+                                    <td>350</td>
+                                    <td>A+</td>
+                                    <td class="action-btns">
+                                        <button class="action-btn edit-btn">আপডেট</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>আকাশ আহমেদ</td>
+                                    <td><input type="number" value="75" class="form-control" min="0" max="100"></td>
+                                    <td><input type="number" value="80" class="form-control" min="0" max="100"></td>
+                                    <td><input type="number" value="85" class="form-control" min="0" max="100"></td>
+                                    <td><input type="number" value="90" class="form-control" min="0" max="100"></td>
+                                    <td>330</td>
+                                    <td>A</td>
+                                    <td class="action-btns">
+                                        <button class="action-btn edit-btn">আপডেট</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- রুটিন ব্যবস্থাপনা -->
+                <div id="routine-management" class="admin-section">
+                    <h3>রুটিন ব্যবস্থাপনা</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="routine-batch">ব্যাচ নির্বাচন করুন</label>
+                            <select id="routine-batch" class="form-control">
+                                <option value="1">ব্যাচ ১</option>
+                                <option value="2">ব্যাচ ২</option>
+                                <option value="3">ব্যাচ ৩</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button class="action-btn add-btn" id="add-routine">নতুন সময়সূচী যোগ করুন</button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>দিন</th>
+                                    <th>সময়</th>
+                                    <th>বিষয়</th>
+                                    <th>পাইভেট ক্লাস</th>
+                                    <th>অ্যাকশন</th>
+                                </tr>
+                            </thead>
+                            <tbody id="routine-list-admin">
+                                <tr>
+                                    <td><input type="text" value="শনিবার" class="form-control"></td>
+                                    <td><input type="text" value="৯:০০-১১:০০" class="form-control"></td>
+                                    <td><input type="text" value="বাংলা" class="form-control"></td>
+                                    <td><input type="text" value="আজ পাইভেট আছে" class="form-control"></td>
+                                    <td class="action-btns">
+                                        <button class="action-btn edit-btn">আপডেট</button>
+                                        <button class="action-btn delete-btn">মুছুন</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" value="রবিবার" class="form-control"></td>
+                                    <td><input type="text" value="৩:০০-৫:০০" class="form-control"></td>
+                                    <td><input type="text" value="ইংরেজি" class="form-control"></td>
+                                    <td><input type="text" value="আজ পাইভেট নাই" class="form-control"></td>
+                                    <td class="action-btns">
+                                        <button class="action-btn edit-btn">আপডেট</button>
+                                        <button class="action-btn delete-btn">মুছুন</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- নোটিস ব্যবস্থাপনা -->
+                <div id="notice-management" class="admin-section">
+                    <h3>নোটিস ব্যবস্থাপনা</h3>
+                    <button class="action-btn add-btn" id="add-notice">নতুন নোটিস যোগ করুন</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>নোটিস</th>
+                                    <th>তারিখ</th>
+                                    <th>স্ট্যাটাস</th>
+                                    <th>অ্যাকশন</th>
+                                </tr>
+                            </thead>
+                            <tbody id="notice-list-admin">
+                                <tr>
+                                    <td><input type="text" value="আগামী ১০ই তারিখে মাসিক পরীক্ষা অনুষ্ঠিত হবে" class="form-control"></td>
+                                    <td><input type="date" value="2023-05-05" class="form-control"></td>
+                                    <td>
+                                        <select class="form-control">
+                                            <option value="active" selected>সক্রিয়</option>
+                                            <option value="inactive">নিষ্ক্রিয়</option>
+                                        </select>
+                                    </td>
+                                    <td class="action-btns">
+                                        <button class="action-btn edit-btn">আপডেট</button>
+                                        <button class="action-btn delete-btn">মুছুন</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" value="বেতন জমা দেওয়ার শেষ তারিখ ১৫ই" class="form-control"></td>
+                                    <td><input type="date" value="2023-05-10" class="form-control"></td>
+                                    <td>
+                                        <select class="form-control">
+                                            <option value="active" selected>সক্রিয়</option>
+                                            <option value="inactive">নিষ্ক্রিয়</option>
+                                        </select>
+                                    </td>
+                                    <td class="action-btns">
+                                        <button class="action-btn edit-btn">আপডেট</button>
+                                        <button class="action-btn delete-btn">মুছুন</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- প্রতিষ্ঠান তথ্য ব্যবস্থাপনা -->
+                <div id="institute-management" class="admin-section">
+                    <h3>প্রতিষ্ঠান তথ্য ব্যবস্থাপনা</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="admin-institute-name">প্রতিষ্ঠানের নাম</label>
+                            <input type="text" id="admin-institute-name" value="আজাদ পাইভট সেন্টার" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-institute-email">ইমেইল</label>
+                            <input type="email" id="admin-institute-email" value="info@azadpivot.edu.bd" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="admin-institute-address">ঠিকানা</label>
+                            <input type="text" id="admin-institute-address" value="১২৩ স্কুল রোড, মতিঝিল, ঢাকা" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-institute-phone">ফোন নম্বর</label>
+                            <input type="text" id="admin-institute-phone" value="০১৭১২৩৪৫৬৭৮, ০১৯১২৩৪৫৬৭৮" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-institute-intro">প্রতিষ্ঠানের পরিচিতি</label>
+                        <textarea id="admin-institute-intro" class="form-control" rows="5">আজাদ পাইভট সেন্টার একটি আদর্শ শিক্ষা প্রতিষ্ঠান যেখানে আমরা শিক্ষার্থীদের সর্বোত্তম শিক্ষা প্রদান করে থাকি। আমাদের অভিজ্ঞ শিক্ষকমণ্ডলী এবং আধুনিক শিক্ষা পদ্ধতি শিক্ষার্থীদের সাফল্যের পথ সুগম করে।</textarea>
+                    </div>
+                    
+                    <button class="save-btn" id="save-institute-info">সংরক্ষণ করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // পেজ নেভিগেশন
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                // সব পেজ লুকান
+                document.getElementById('home-page').style.display = 'none';
+                document.getElementById('batch-details-page').style.display = 'none';
+                document.getElementById('admin-login').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'none';
+                
+                // নেভ মেনুতে অ্যাকটিভ ক্লাস আপডেট
+                document.querySelectorAll('nav ul li a').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // টার্গেট পেজ দেখান
+                if(targetId === '#home-page') {
+                    document.getElementById('home-page').style.display = 'block';
+                } 
+                else if(targetId === '#batch-list') {
+                    document.getElementById('home-page').style.display = 'block';
+                    window.location.hash = '#batch-list';
+                }
+                else if(targetId === '#admin-login') {
+                    document.getElementById('admin-login').style.display = 'block';
+                }
+            });
+        });
+        
+        // ব্যাচ ডিটেইলস দেখান
+        document.querySelectorAll('.view-batch').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const batchId = this.getAttribute('data-batch');
+                loadBatchDetails(batchId);
+                
+                // সব পেজ লুকান
+                document.getElementById('home-page').style.display = 'none';
+                document.getElementById('admin-login').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'none';
+                
+                // ব্যাচ ডিটেইল পেজ দেখান
+                document.getElementById('batch-details-page').style.display = 'block';
+            });
+        });
+        
+        // ব্যাচ ডিটেইলস লোড
+        function loadBatchDetails(batchId) {
+            document.getElementById('batch-title').textContent = `ব্যাচ ${batchId} - বিস্তারিত তথ্য`;
+            
+            // শিক্ষার্থী তালিকা লোড
+            const studentList = document.getElementById('student-list');
+            studentList.innerHTML = '';
+            
+            const students = [
+                { roll: 1, name: "রিয়াদ হাসান", address: "মতিঝিল, ঢাকা", mobile: "০১৭১২৩৪৫৬৭৮", payment: "পরিশোধিত" },
+                { roll: 2, name: "আকাশ আহমেদ", address: "ধানমন্ডি, ঢাকা", mobile: "০১৮১২৩৪৫৬৭৮", payment: "অপরিশোধিত" },
+                { roll: 3, name: "সুমাইয়া আক্তার", address: "মিরপুর, ঢাকা", mobile: "০১৯১২৩৪৫৬৭৮", payment: "পরিশোধিত" }
+            ];
+            
+            students.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.roll}</td>
+                    <td>${student.name}</td>
+                    <td>${student.address}</td>
+                    <td>${student.mobile}</td>
+                    <td>${student.payment}</td>
+                `;
+                studentList.appendChild(row);
+            });
+            
+            // ফলাফল তালিকা লোড
+            const resultList = document.getElementById('result-list');
+            resultList.innerHTML = '';
+            
+            const results = [
+                { roll: 1, name: "রিয়াদ হাসান", bangla: 80, english: 85, math: 90, total: 255, grade: "A+" },
+                { roll: 2, name: "আকাশ আহমেদ", bangla: 75, english: 80, math: 85, total: 240, grade: "A" },
+                { roll: 3, name: "সুমাইয়া আক্তার", bangla: 85, english: 90, math: 95, total: 270, grade: "A+" }
+            ];
+            
+            results.forEach(result => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${result.roll}</td>
+                    <td>${result.name}</td>
+                    <td>${result.bangla}</td>
+                    <td>${result.english}</td>
+                    <td>${result.math}</td>
+                    <td>${result.total}</td>
+                    <td>${result.grade}</td>
+                `;
+                resultList.appendChild(row);
+            });
+            
+            // রুটিন তালিকা লোড
+            const routineList = document.getElementById('routine-list');
+            routineList.innerHTML = '';
+            
+            const routines = [
+                { day: "শনিবার", time: "৯:০০-১১:০০", subject: "বাংলা", private: "আজ পাইভেট আছে" },
+                { day: "রবিবার", time: "৩:০০-৫:০০", subject: "ইংরেজি", private: "আজ পাইভেট নাই" },
+                { day: "সোমবার", time: "৯:০০-১১:০০", subject: "গণিত", private: "আজ পাইভেট আছে" }
+            ];
+            
+            routines.forEach(routine => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${routine.day}</td>
+                    <td>${routine.time}</td>
+                    <td>${routine.subject}</td>
+                    <td>${routine.private}</td>
+                `;
+                routineList.appendChild(row);
+            });
+        }
+        
+        // ব্যাচ থেকে হোমে ফিরুন
+        document.getElementById('back-to-home').addEventListener('click', function() {
+            document.getElementById('batch-details-page').style.display = 'none';
+            document.getElementById('home-page').style.display = 'block';
+            
+            // নেভ মেনু আপডেট
+            document.querySelectorAll('nav ul li a').forEach(navLink => {
+                navLink.classList.remove('active');
+            });
+            document.querySelector('nav ul li a[href="#home-page"]').classList.add('active');
+        });
+        
+        // এডমিন লগইন ফর্ম
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // হার্ডকোডেড ক্রেডেনশিয়াল
+            if(username === 'riyadhasanrabbi14' && password === 'Akash1474/*-+') {
+                document.getElementById('admin-login').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                
+                // সব সেকশন লুকান
+                document.querySelectorAll('.admin-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // প্রথম সেকশন দেখান
+                document.querySelector('.admin-section').classList.add('active');
+            } else {
+                alert('ভুল ইউজারনেম বা পাসওয়ার্ড!');
+            }
+        });
+        
+        // এডমিন মেনু ট্যাব
+        document.querySelectorAll('.admin-menu-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // সব ট্যাব থেকে active ক্লাস সরান
+                document.querySelectorAll('.admin-menu-link').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // বর্তমান ট্যাবে active ক্লাস যোগ করুন
+                this.classList.add('active');
+                
+                // সব সেকশন লুকান
+                document.querySelectorAll('.admin-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // টার্গেট সেকশন দেখান
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).classList.add('active');
+            });
+        });
+        
+        // এডমিন লগআউট
+        document.getElementById('admin-logout').addEventListener('click', function() {
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('home-page').style.display = 'block';
+            
+            // নেভ মেনু আপডেট
+            document.querySelectorAll('nav ul li a').forEach(navLink => {
+                navLink.classList.remove('active');
+            });
+            document.querySelector('nav ul li a[href="#home-page"]').classList.add('active');
+        });
+        
+        // প্রতিষ্ঠান তথ্য সংরক্ষণ
+        document.getElementById('save-institute-info').addEventListener('click', function() {
+            const name = document.getElementById('admin-institute-name').value;
+            const email = document.getElementById('admin-institute-email').value;
+            const address = document.getElementById('admin-institute-address').value;
+            const phone = document.getElementById('admin-institute-phone').value;
+            const intro = document.getElementById('admin-institute-intro').value;
+            
+            // হোম পেজ আপডেট
+            document.getElementById('institute-name').textContent = name;
+            document.getElementById('institute-intro').innerHTML = `<p>${intro}</p>`;
+            
+            const contactDetails = document.getElementById('contact-details');
+            contactDetails.innerHTML = `
+                <p><strong>ঠিকানা:</strong> ${address}</p>
+                <p><strong>ফোন:</strong> ${phone}</p>
+                <p><strong>ইমেইল:</strong> ${email}</p>
+            `;
+            
+            alert('প্রতিষ্ঠান তথ্য সফলভাবে সংরক্ষণ করা হয়েছে!');
+        });
+        
+        // নতুন ব্যাচ যোগ করুন
+        document.getElementById('add-batch').addEventListener('click', function() {
+            const batchList = document.getElementById('batch-list-admin');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><input type="text" value="নতুন ব্যাচ" class="form-control"></td>
+                <td><input type="number" value="0" class="form-control"></td>
+                <td><input type="text" value="০%" class="form-control"></td>
+                <td class="action-btns">
+                    <button class="action-btn edit-btn">আপডেট</button>
+                    <button class="action-btn delete-btn">মুছুন</button>
+                </td>
+            `;
+            batchList.appendChild(newRow);
+        });
+        
+        // নতুন শিক্ষার্থী যোগ করুন
+        document.getElementById('add-student').addEventListener('click', function() {
+            const studentList = document.getElementById('student-list-admin');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${studentList.rows.length + 1}</td>
+                <td><input type="text" value="নতুন শিক্ষার্থী" class="form-control"></td>
+                <td><input type="text" value="০১XXXXXXXXX" class="form-control"></td>
+                <td><input type="text" value="ঠিকানা" class="form-control"></td>
+                <td>
+                    <select class="form-control">
+                        <option value="paid">পরিশোধিত</option>
+                        <option value="unpaid" selected>অপরিশোধিত</option>
+                    </select>
+                </td>
+                <td class="action-btns">
+                    <button class="action-btn edit-btn">আপডেট</button>
+                    <button class="action-btn delete-btn">মুছুন</button>
+                </td>
+            `;
+            studentList.appendChild(newRow);
+        });
+        
+        // নতুন রুটিন যোগ করুন
+        document.getElementById('add-routine').addEventListener('click', function() {
+            const routineList = document.getElementById('routine-list-admin');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><input type="text" class="form-control" placeholder="দিন লিখুন"></td>
+                <td><input type="text" class="form-control" placeholder="সময় লিখুন"></td>
+                <td><input type="text" class="form-control" placeholder="বিষয় লিখুন"></td>
+                <td><input type="text" class="form-control" placeholder="পাইভেট ক্লাস লিখুন"></td>
+                <td class="action-btns">
+                    <button class="action-btn edit-btn">আপডেট</button>
+                    <button class="action-btn delete-btn">মুছুন</button>
+                </td>
+            `;
+            routineList.appendChild(newRow);
+        });
+        
+        // নতুন নোটিস যোগ করুন
+        document.getElementById('add-notice').addEventListener('click', function() {
+            const noticeList = document.getElementById('notice-list-admin');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><input type="text" class="form-control" placeholder="নতুন নোটিস লিখুন"></td>
+                <td><input type="date" class="form-control" value="${new Date().toISOString().split('T')[0]}"></td>
+                <td>
+                    <select class="form-control">
+                        <option value="active" selected>সক্রিয়</option>
+                        <option value="inactive">নিষ্ক্রিয়</option>
+                    </select>
+                </td>
+                <td class="action-btns">
+                    <button class="action-btn edit-btn">আপডেট</button>
+                    <button class="action-btn delete-btn">মুছুন</button>
+                </td>
+            `;
+            noticeList.appendChild(newRow);
+        });
+        
+        // ডিলিট বাটন ফাংশনালিটি
+        document.addEventListener('click', function(e) {
+            if(e.target.classList.contains('delete-btn')) {
+                if(confirm('আপনি কি নিশ্চিতভাবে মুছতে চান?')) {
+                    e.target.closest('tr').remove();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
